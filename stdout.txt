@@ -1,0 +1,2 @@
+Our app is running on http://localhost:80
+Connected to db!
