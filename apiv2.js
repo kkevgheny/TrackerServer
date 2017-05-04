@@ -28,11 +28,26 @@ var REFRESH_TOKEN_JON = new CRON.CronJob({
 });
 var SYNC_JOB = new CRON.CronJob({
     cronTime: '* 8,20 * * *',
+    //cronTime: '* * * * *',
     onTick: function(){
         User.find({}, function(err, users){
             if(err) console.log(err);
             users.forEach(user => {
-                GET_USER_DATA(user.fitbitID, true);
+                GetUserSteps(user.fitbitID, user.accessToken).then(steps => {
+                    GetUserCalories(user.fitbitID, user.accessToken).then(calories => {
+                        GetUserDistance(user.fitbitID, user.accessToken).then(distance => {
+                            GetUserHeartRate(user.fitbitID, user.accessToken).then(heartrate => {
+                                DataSchema.update({fitbitID: user.fitbitID, updatedAt: distance[0].dateTime}, {
+                                    distance: distance[0].value,
+                                    calories: calories[0].value,
+                                    steps: steps[0].value,
+                                }, {upsert: true}, function(err){
+                                    if(err) console.log(err);
+                                });
+                            });
+                        });
+                    });
+                });
             });
         });
     },
@@ -108,41 +123,31 @@ function refreshToken(update, userID, refreshToken){
 }
 
 
-function ImportHistory(userID, accessToken, isCRON){
-    var period;
+function ImportHistory(userID, accessToken, period){
     return new Promise(function (resolve, reject){
-        Limits.findOne({ID: 'main'}, function(err, config){
-            if(err) console.log(err);
-            if(isCRON) period = config.CRON_FETCH_PERIOD;
-            else period = config.period;
-            GetUserCalories(userID, accessToken, period).then(calories => {
-                GetUserSteps(userID, accessToken, period).then(steps => {
-                    GetUserDistance(userID, accessToken, period).then(distance => {
-                        GetUserHeartRate(userID, accessToken, period).then(heart => {
-                            if(calories && steps && distance && heart){
-                                User.update({fitbitID: userID}, { err: false }, function(err){
-                                    resolve({
-                                        avgCals: config.calories,
-                                        avgSteps: config.steps,
-                                        avgDistance: config.distance,
-                                        avgMinH: config.hmin,
-                                        avgMaxH: config.hmax,
-                                        calories: calories,
-                                        steps: steps,
-                                        distance: distance,
-                                        heart: heart
-                                    });
+        GetUserCalories(userID, accessToken, period).then(calories => {
+            GetUserSteps(userID, accessToken, period).then(steps => {
+                GetUserDistance(userID, accessToken, period).then(distance =>{
+                    GetUserHeartRate(userID, accessToken, period).then(heartrate => {
+                        if(calories && steps && distance && heartrate){
+                            User.update({fitbitID: userID}, {
+                                err: false
+                            }, function(err){
+                                resolve({
+                                    heart: heartrate,
+                                    calories: calories,
+                                    steps: steps,
+                                    distance: distance
                                 });
-                            }
-                            else{
-                                console.log(calories, steps, distance, heart);
-                                User.update({fitbitID: userID}, {
-                                    err: true
-                                }, function(err){
-                                    reject(new Error('Undefined data, Or acesstoken/refreshtoken missed.'));
-                                });
-                            }
-                        });
+                            });
+                        }
+                        else {
+                            User.update({fitbitID: userID}, {
+                                err: true
+                            }, function(err){
+                                reject(new Error('Undefined data.'));
+                            });
+                        };
                     });
                 });
             });
@@ -150,74 +155,47 @@ function ImportHistory(userID, accessToken, isCRON){
     });
 }
 
-function GET_USER_DATA(fitbitID, isCRON){
-    return new Promise(function(resolve, reject){
-        User.findOne({fitbitID: fitbitID}, function(err, user){
-            ImportHistory(user.fitbitID, user.accessToken, isCRON).then(data => {
-                var tmpSteps = 0;
-                var tmpCals = 0;
-                var tmpDist = 0;
-                var tmpHeart = 0;
-                for(i = 0; i < data.calories.length; i++){
-                    if(i == data.heart.length -1) restingHeart = 0;
-                    else {
-                        restingHeart = data.heart[i].value.restingHeartRate;
-                        tmpHeart += Number(data.heart[i].value.restingHeartRate);
-                    }
-                    tmpSteps += Number(data.steps[i].value);
-                    tmpCals += Number(data.calories[i].value);
-                    tmpDist += Number(data.distance[i].value);
-
-                    DataSchema.update({fitbitID: user.fitbitID, updatedAt: data.distance[i].dateTime},{
-                        calories: data.calories[i].value,
-                        steps: data.steps[i].value,
-                        distance: data.distance[i].value,
-                        heart: restingHeart
-                    }, { upsert: true }, function(err){
-                        if(err) console.log(err);
+api.post('/importHistory', function(req, res){
+    User.findOne({fitbitID: req.body.fitbitID}, function(err, user){
+        if(err) console.log(err);
+        Limits.findOne({ID: 'main'}, function(err, config){
+            if(err) console.log(err);
+            ImportHistory(user.fitbitID, user.accessToken, config.period).then(data =>{
+                DataSchema.remove({fitbitID: user.fitbitID}, function(err){
+                    data.calories.forEach(calories => {
+                        DataSchema.update({fitbitID: user.fitbitID, updatedAt: calories.dateTime}, {
+                            calories: calories.value,
+                        }, {
+                            upsert: true
+                        }, function(err){});
                     });
-                }
-                if( (tmpSteps / 7 < data.avgSteps)  && (tmpDist / 7 < data.avgDistance) && (tmpCals / 7 < data.avgCals) && ( tmpHeart / 6 < data.avgMinH || tmpHeart / 6 > data.avgMaxH )){
-                    resolve({is_Sedentary: true, fitbitID: user.fitbitID});
-                    User.update({fitbitID: user.fitbitID}, {
-                        sedentary: true
-                    }, function(err){});
-                }
-                else{
-                    resolve({is_Sedentary: false, fitbitID: user.fitbitID});
-                    User.update({fitbitID: user.fitbitID}, {
-                        sedentary: false
-                    }, function(err){});
-                }
-                
-            }, reject => {
+                    data.steps.forEach(steps => {
+                        DataSchema.update({fitbitID: user.fitbitID, updatedAt: steps.dateTime}, {
+                            steps: steps.value,
+                        }, {
+                            upsert: true
+                        }, function(err){});
+                    });
+                    data.distance.forEach(distance => {
+                        DataSchema.update({fitbitID: user.fitbitID, updatedAt: distance.dateTime}, {
+                            distance: distance.value,
+                        }, {
+                            upsert: true
+                        }, function(err){});
+                    });
+                    data.heart.forEach(heart => {
+                        DataSchema.update({fitbitID: user.fitbitID, updatedAt: heart.dateTime}, {
+                            heart: heart.value.restingHeartRate,
+                        }, {
+                            upsert: true
+                        }, function(err){});
+                    });
+                    res.json({msg: 'Done importHistory'});
+                });
+            }, err => {
+                res.json({msg: false});
             });
         });
-    });
-}
-
-
-api.post('/importHistory', function(req, res){
-    GET_USER_DATA(req.body.fitbitID, true).then(data => {
-        if(!data.is_Sedentary){
-            console.log('user is not sedentary');
-            User.update({fitbitID: data.fitbitID}, {
-                sedentary: false
-            }, function(err){
-                res.json({msg: 'ok'});
-            });
-        }
-        else{
-            console.log('user is sedentary');
-            User.update({fitbitID: data.fitbitID}, {
-                sedentary: true
-            }, function(err){
-                res.json({msg: 'ok'});
-            });
-        }
-        
-    }, reject => {
-        res.json({msg: 'fail'});
     });
 });
 
@@ -381,7 +359,7 @@ api.get('/getLimits', function(req, res){
     });
 });
 
-exports.GET_USER_DATA           = GET_USER_DATA;
+exports.ImportHistory           = ImportHistory;
 exports.REFRESH_TOKEN_JON       = REFRESH_TOKEN_JON;
 exports.SYNC_JOB                = SYNC_JOB;
 exports.api                     = api;

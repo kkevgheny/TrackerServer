@@ -4,7 +4,7 @@ var User                = require('./db').User;
 var REFRESH_TOKEN_JON   = require('./api').REFRESH_TOKEN_JON;
 var SYNC_JOB            = require('./api').SYNC_JOB;
 var api                 = require('./api').api;
-var ImportHistory       = require('./api').ImportHistory;
+var GET_USER_DATA       = require('./api').GET_USER_DATA;
 var cors                = require('cors');
 
 var expressSession  = require('express-session');
@@ -34,7 +34,7 @@ passport.use('fitbit', new FitbitStrategy({
     callbackURL: "http://fitness-watcher.webify.tech/auth/fitbit/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    ImportHistory(profile.id, accessToken).then(() => {
+    GET_USER_DATA(profile.id, false).then(() => {
         console.log('Importing history');
     });
     User.find({fitbitID: profile.id}, function(err, user){

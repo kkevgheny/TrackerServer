@@ -9,6 +9,8 @@ db.once('open', function() {
 
 
 var userSchema = mongoose.Schema({
+    sedentary: Boolean,
+    err: Boolean,
     updatedAt: Date,
     name: String,
     phone: String,
@@ -24,6 +26,7 @@ var User = mongoose.model('users', userSchema);
 var userDataSchema = mongoose.Schema({
   fitbitID: String,
   updatedAt: String,
+  heart: Number,
   calories: Number,
   steps: Number,
   distance: Number,
@@ -31,8 +34,11 @@ var userDataSchema = mongoose.Schema({
 var DataSchema = mongoose.model('data', userDataSchema);
 
 var limitsSchema = mongoose.Schema({
+  CRON_FETCH_PERIOD: String,
   ID: String,
   calories: Number,
+  hmin: Number,
+  hmax: Number,
   steps: Number,
   distance: Number,
   period: String
