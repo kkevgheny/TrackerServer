@@ -31,7 +31,7 @@ passport.deserializeUser(function(id, done) {
 passport.use('fitbit', new FitbitStrategy({
     clientID:     '2289DH',
     clientSecret: '5fb5478a042b719140bb2e460331bb17',
-    callbackURL: "http://fitness-watcher.webify.tech/auth/fitbit/callback"
+    callbackURL: "http://nsurg.webify.tech/auth/fitbit/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     GET_USER_DATA(profile.id, false).then(() => {
