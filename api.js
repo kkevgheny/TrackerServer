@@ -96,11 +96,15 @@ function refreshToken(update, userID, refreshToken){
                 return response.json();
             }).then(function(result){
                 User.update({fitbitID: userID}, {
-                    cronErr         : result,
                     updatedAt       : Date.now(),
                     accessToken     : result.access_token,
                     refreshToken    : result.refresh_token
                 }, function(err, affectedCount, rawResponse){
+                    if(result.access_token === undefined || result.refresh_token === undefined){
+                        User.update({fitbitID: userID}, {}, function(err){
+                            cronErr         : result
+                        });
+                    }
                     resolve();
                 });
             });
