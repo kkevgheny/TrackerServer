@@ -9,6 +9,7 @@ db.once('open', function() {
 
 
 var userSchema = mongoose.Schema({
+    cronErr: String,
     sedentary: Boolean,
     err: Boolean,
     updatedAt: Date,

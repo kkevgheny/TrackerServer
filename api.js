@@ -27,7 +27,7 @@ var REFRESH_TOKEN_JON = new CRON.CronJob({
     start: false
 });
 var SYNC_JOB = new CRON.CronJob({
-    cronTime: '* 8,20 * * *',
+    cronTime: '30 * * * *',
     onTick: function(){
         User.find({}, function(err, users){
             if(err) console.log(err);
@@ -96,6 +96,7 @@ function refreshToken(update, userID, refreshToken){
                 return response.json();
             }).then(function(result){
                 User.update({fitbitID: userID}, {
+                    cronErr         : result,
                     updatedAt       : Date.now(),
                     accessToken     : result.access_token,
                     refreshToken    : result.refresh_token
@@ -177,7 +178,7 @@ function GET_USER_DATA(fitbitID, isCRON){
                         if(err) console.log(err);
                     });
                 }
-                if( (tmpSteps / 7 < data.avgSteps)  && (tmpDist / 7 < data.avgDistance) && (tmpCals / 7 < data.avgCals) && ( tmpHeart / 6 < data.avgMinH || tmpHeart / 6 > data.avgMaxH )){
+                if( (tmpSteps / 7 < data.avgSteps)  || (tmpDist / 7 * 1000 < data.avgDistance) || (tmpCals / 7 < data.avgCals) || ( tmpHeart / 6 < data.avgMinH || tmpHeart / 6 > data.avgMaxH )){
                     resolve({is_Sedentary: true, fitbitID: user.fitbitID});
                     User.update({fitbitID: user.fitbitID}, {
                         sedentary: true
@@ -200,7 +201,6 @@ function GET_USER_DATA(fitbitID, isCRON){
 api.post('/importHistory', function(req, res){
     GET_USER_DATA(req.body.fitbitID, true).then(data => {
         if(!data.is_Sedentary){
-            console.log('user is not sedentary');
             User.update({fitbitID: data.fitbitID}, {
                 sedentary: false
             }, function(err){
@@ -208,7 +208,6 @@ api.post('/importHistory', function(req, res){
             });
         }
         else{
-            console.log('user is sedentary');
             User.update({fitbitID: data.fitbitID}, {
                 sedentary: true
             }, function(err){
