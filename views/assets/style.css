@@ -1,0 +1,1513 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* ================================== Presets */
+html, body{
+    height: 100% !important;
+}
+body {
+    font-family: aktiv-grotesk, "Helvetica Neue", Helvetica, Arial, fosans-serif;
+    font-size: 18px;
+    vertical-align: baseline;
+    color: #393F48;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0 auto;
+    padding: 0;
+    font-weight: normal;
+    background: #131314;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 46px;
+    font-weight: 200;
+    line-height: 54px;
+}
+
+h2 {
+    margin: 0 auto;
+    font-size: 42px;
+    font-weight: 200;
+    line-height: 52px;
+    max-width: 800px;
+    color: #232427;
+}
+
+h3 {
+    color: #232427;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(251, 61, 25);
+    outline: none;
+}
+
+p {
+    opacity: 1;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    line-height: 28px;
+    position:relative;
+    z-index: 85;
+}
+
+.button {
+    padding: 13px 33px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+    color: #FFF;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    text-shadow: none;
+}
+
+.centered {
+    padding: 140px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.light {
+    background: #FFF;
+    color: #5A5D61;
+}
+
+.dark {
+    background: #131314;
+    color: #FFF;
+}
+
+.dark h2 {
+    color: #FFF;
+    position:relative;
+    z-index: 85;
+}
+
+.glyph {
+    margin-bottom: 40px;
+}
+
+.intro {
+    font-size: 21px;
+    margin-bottom: 50px !important;
+}
+
+/* ================================== Header */
+
+.logo {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 600;
+    top: 50px;
+    left: 80px;
+    position: absolute;
+    width: 120px;
+}
+
+.logo .logoicon {
+    width: 25px;
+    height: 25px;
+    background: url(/static/images/humanlogo-white@2x.png);
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+    vertical-align: top;
+    margin-right: 10px;
+    margin-top: 1px;
+    float: left;
+}
+
+header {
+    text-align: center;
+    color: #FFF;
+    display: block;
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+}
+
+header ul {
+    list-style: none;
+    margin: 58px 0 0 -200px;
+    padding: 0;
+    display: inline-block;
+    margin-left: 0%;
+}
+
+header li {
+    display: block;
+    text-align: center;
+    line-height: 20px;
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #FFF;
+}
+
+header li a {
+    padding: 10px 0;
+}
+
+header.light {
+    text-shadow: none;
+}
+
+header li a:hover {
+    opacity: 0.8;
+    -webkit-transition: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
+    -o-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+}
+
+.navigation-icon {
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+    margin-top: 18px;
+    position: absolute;
+    right: 0;
+    display: none;
+}
+
+.navigation-icon .line {
+    height: 2px;
+    width: 100%;
+    left: 0;
+    margin-top: 5px;
+    background-color: #FFF;
+    display: block;
+    opacity: 0.6;
+}
+
+header .button {
+    background: #FF561F;
+    position: fixed;
+    right: 80px;
+    top: 50px;
+    z-index: 1000;
+}
+
+header .button:hover {
+    opacity: 1;
+    background: #FFF;
+    color: #131314;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+
+header a {
+    color: #FFF;
+}
+
+.headcopy {
+    margin: 0 auto;
+    max-width: 750px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 32px;
+    /*text-shadow: 0px 0px 20px rgba(0,0,0,1);*/
+}
+
+.headcopy p {
+    margin-bottom: 50px;
+    font-size: 20px;
+}
+
+.headcopy h1 {
+    margin: 0 auto;
+}
+
+.headcopy .button {
+    /*background: #FF561F;*/
+    vertical-align: baseline;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-color: #fff;
+    background: #fff;
+    color: #008ed6;
+}
+
+.headcopy .button:hover {
+    /*background: #D6491B;*/
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    background: transparent;
+    color: #fff;
+        border-color: #fff;
+}
+
+#linktodownload_home {
+    display: none;
+    visibility: hidden;
+}
+
+/* ================================== Intro */
+
+#intro {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /*background: url(head-cover.jpg) center center no-repeat;*/
+    background-image: linear-gradient(to right, #008ed6, #005885);
+    background-size: cover;
+    width: 100%;
+    padding: 320px 0 260px 0;
+    color: #FFF;
+}
+
+.centered p {
+    max-width: 700px;
+}
+
+/* ================================== Android Modal */
+
+#lean_overlay {
+    position: fixed;
+    z-index: 1400;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+#android_form {
+    opacity: 1;
+    z-index: 1500;
+    top: 20%;
+    left: 0;
+    right: 0;
+    display: none;
+    max-width: 360px;
+    position: absolute;
+    left: 40%;
+    margin-left: -50px;
+}
+
+#android_form2 {
+    background: rgb(250,250,250);
+    border: 1px solid grey;
+    padding: 50px;
+    display: block;
+    border-radius: 10px;
+    margin: 50px auto;
+    max-width: 450px;
+
+}
+
+#mc_embed_signup {
+background: rgb(250,250,250);
+    border: 1px solid grey;
+    padding: 10px 20px;
+    display: block;
+    border-radius: 10px;
+    margin: 30px auto;
+    max-width: 450px;
+
+}
+
+#mc_embed_signup .button {
+    background-color: #FF6923 !important;
+    border-radius: 15px !important;
+    font-size: 12px !important;
+}
+
+#form-modal {
+    margin: 0 auto;
+    background: #FFF;
+    border-radius: 6px;
+    padding: 30px 30px;
+}
+
+#form-modal-complete {
+    max-width: 400px;
+    -webkit-transition: max-width 0.8s;
+    -moz-transition: max-width 0.8s;
+    transition: max-width 0.8s;
+}
+
+#closeButton {
+    background: url(/static/images/closemodal@2x.png);
+    background-size: 26px 26px;
+    width: 26px;
+    height: 26px;
+    position: relative;
+    right: -10px;
+    top: -10px;
+    z-index: 3000;
+    float: right;
+    border-radius: 20px;
+}
+
+#form-modal p {
+   margin: 10px 0 20px 0;
+   font-size: 14px;
+   line-height: 24px;
+}
+
+#form-modal #thanks {
+    margin-bottom: 0;
+}
+
+.button.android {
+    background: none;
+    /*box-shadow: inset 0px 0px 0px 2px rgba(255, 255, 255, 0.3);*/
+    background: #fff;
+    color: #131314;
+}
+
+.button.android:hover {
+    background: #131314;
+    opacity: 1;
+    color: #fff;
+}
+
+.button.androidsignup {
+    width: 100%;
+    color: #FFF;
+    background: #FF561F;
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+.button.androidsignup:hover {
+   background: #131314;
+    -webkit-transition: 0.1s;
+    -moz-transition: 0.1s;
+    -o-transition: 0.1s;
+    transition: 0.1s;
+}
+
+/* ================================== Input field */
+
+div > span > input {
+    font-family:inherit;
+    font-size:100%;
+    margin:0;
+}
+
+div > span > input {
+    line-height:normal;
+}
+
+.input {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin: -0.5em 0em 1.5em 0em;
+    width: 100%;
+    vertical-align: top;
+}
+
+.input__field {
+    position: relative;
+    display: block;
+    float: right;
+    padding: 0.8em;
+    width: 60%;
+    border: none;
+    border-radius: 0;
+    color: #000;
+    font-size: 20px;
+    font-weight: 500;
+    -webkit-appearance: none; /* for box shadows to show on iOS */
+}
+
+.input__field:focus {
+    outline: none;
+}
+
+.input__label {
+    display: inline-block;
+    /*float: right;*/
+    padding: 0 1em;
+    width: 40%;
+    color: #393F48;
+    font-size: 70.25%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    /*user-select: none;*/
+}
+
+.input__label-content {
+    position: relative;
+    display: block;
+    padding: 1.6em 0;
+    width: 100%;
+}
+
+.input--hoshi {
+    overflow: hidden;
+}
+
+.input__field--hoshi {
+    margin-top: 1em;
+    padding: 0.85em 0em;
+    width: 100%;
+    background: transparent;
+    color: #000;
+}
+
+.input__label--hoshi {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0em;
+    width: 100%;
+    height: calc(100% - 1em);
+    text-align: left;
+    pointer-events: none;
+}
+
+.input__label-content--hoshi {
+    position: absolute;
+}
+
+.input__label--hoshi::before,
+.input__label--hoshi::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 99%;
+    height: calc(100% - 10px);
+    border-bottom: 1px solid #B9C1CA;
+}
+
+.input__label--hoshi::after {
+    margin-top: -1px;
+    border-bottom: 4px solid red;
+    -webkit-transform: translate3d(-101%, 0, 0);
+    transform: translate3d(-101%, 0, 0);
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+}
+
+.input__label--hoshi-color-3::after {
+    border-color: hsl(20, 100%, 50%);
+}
+
+.input__field--hoshi:focus + .input__label--hoshi::after,
+.input--filled .input__label--hoshi::after {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.input__field--hoshi:focus + .input__label--hoshi .input__label-content--hoshi,
+.input--filled .input__label-content--hoshi {
+    -webkit-animation: anim-1 0.3s forwards;
+    animation: anim-1 0.3s forwards;
+}
+
+@-webkit-keyframes anim-1 {
+    50% {
+        opacity: 0;
+        -webkit-transform: translate3d(1em, 0, 0);
+        transform: translate3d(1em, 0, 0);
+    }
+    51% {
+        opacity: 0;
+        -webkit-transform: translate3d(-1em, -40%, 0);
+        transform: translate3d(-1em, -40%, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -40%, 0);
+        transform: translate3d(0, -40%, 0);
+    }
+}
+
+@keyframes anim-1 {
+    50% {
+        opacity: 0;
+        -webkit-transform: translate3d(1em, 0, 0);
+        transform: translate3d(1em, 0, 0);
+    }
+    51% {
+        opacity: 0;
+        -webkit-transform: translate3d(-1em, -40%, 0);
+        transform: translate3d(-1em, -40%, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -40%, 0);
+        transform: translate3d(0, -40%, 0);
+    }
+}
+
+/* ================================== Section 1: Get Active */
+
+.getactive{
+    /*padding: 120px 0 0 0;*/ padding: 0px !important;
+    position: relative;
+    -webkit-box-shadow: inset 0px -70px 0px 0px #F8F8F9;
+    -moz-box-shadow: inset 0px -70px 0px 0px #F8F8F9;
+    box-shadow:  inset 0px -70px 0px 0px #F8F8F9;
+}
+
+.getactive .iphonesingleplayer{
+    /*background: url(/static/images/human_pulse_iphone.png)*/
+    background: url(/static/images/human_pulse_iphone_alt.png);
+    background-repeat: no-repeat;
+    background-size: 408px 829px;
+    height: 728px;
+    width: 408px;
+    padding-top: 100px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    z-index: 400;
+}
+
+.getactive .iphoneclubs{
+    background: url(/static/images/human_pulse_6p.png);
+    background-repeat: no-repeat;
+    /*background-size: 391px 775px;
+    height: 698px;
+    width: 391px;
+    padding-top: 96px;*/
+    margin-left: -50px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    z-index: 40;
+
+    background-size: 370px 750px;
+    height: 750px;
+    width: 391px;
+    padding-top: 0px;
+}
+
+.screenshot-singleplayer {
+    width: 356px;
+    height: 630px;
+}
+
+.screenshot-clubs {
+    width: 339px;
+    height: 600px;
+}
+
+.map {
+    background: url(/static/images/newyork-map.png);
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.map-overlay{
+    /*content: '\A';*/
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 70px);
+    top:0;
+    left:0;
+    z-index: 0;
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,1) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.05) 0%,rgba(0,0,0,0.8) 75%,rgba(0,0,0,1) 100%);
+    background: radial-gradient(ellipse at center,  rgba(0,0,0,0.05) 0%,rgba(0,0,0,0.8) 75%,rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=1 );
+}
+
+.marker-animation {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 70px);
+  overflow: hidden;
+}
+
+.marker-animation__marker {
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-width: 4px;
+  border-style: solid;
+  -webkit-background-clip: padding;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  transition: all 2s ease-in;
+  opacity: 1;
+}
+
+.glyph-pulse {
+    padding-top:120px;
+    padding-bottom: 40px;
+    position:relative;
+    z-index:999;
+}
+
+.map-content {
+    z-index: 999;
+}
+
+
+/* ================================== Section 2: User Reviews */
+
+.reviews {
+    padding: 80px 0 140px;
+    background: #F8F8F9;
+}
+
+.reviews a {
+    color: #2F363F;
+}
+
+.reviews ul  {
+    max-width: 1040px;
+    display: block;
+    margin: 0 auto;
+    list-style: none;
+}
+
+.reviews li  {
+    max-width: 314px;
+    display: inline-block;
+    margin-right: 44px;
+    padding: 0;
+    vertical-align: top;
+    margin-top: 40px;
+}
+
+.reviews .quote-3  {
+    margin-right: 0;
+}
+
+.reviews li .avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border: 8px solid #F8F8F9;
+    -webkit-box-shadow: 0px 0px 0px 1px #E3E3E5;
+    -moz-box-shadow: 0px 0px 0px 1px #E3E3E5;
+    box-shadow: 0px 0px 0px 1px #E3E3E5;
+    margin-bottom: 20px;
+}
+
+.reviews li p {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    position: relative;
+    z-index: 30;
+}
+
+.reviews h3 {
+    margin-bottom: 10px;
+}
+
+/* ================================== Section 3: Designed Banner */
+
+.designed {
+    padding: 320px 0;
+    background-image: url('/static/images/background-section.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.designed p {
+    margin-bottom: 0;
+}
+
+/* ================================== Section 4: Community */
+
+.community {
+    padding: 140px 0 150px;
+    display: inline-block;
+}
+
+.community ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: inline-block;
+    max-width: 1040px;
+    margin: 0 auto;
+    text-align: left;
+    margin-top: 80px;
+}
+
+.community .glyph {
+    margin-bottom: 30px;
+}
+
+.community li {
+    display: inline-block;
+    width: 498px;
+    vertical-align: top;
+}
+
+.community li:nth-child(odd) {
+    margin-right: 40px;
+}
+
+.communitytiles p {
+    max-width: 430px;
+    margin: 10px 0 22px 25px;
+}
+
+.community li h3, .community .button {
+    margin-left: 25px;
+}
+
+.community .photo {
+    width: 500px;
+    height: 320px;
+    margin-bottom: 48px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.community .readstory {
+    font-size: 12px;
+    padding: 0 25px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #232324;
+    text-transform: uppercase;
+}
+
+.community .readstory:hover {
+    opacity: 0.6
+}
+
+.blog1 {
+    background: #131314;
+    background: url(/static/images/blogpost-1@2x.jpg);
+    background-size: cover;
+}
+
+.blog2 {
+    background: #131314;
+    background: url(/static/images/blogpost-1@2x.jpg);
+    background-position: center;
+}
+
+/* ================================== Section 5: Cities */
+
+.cities {
+    background-image: url('/static/images/world-map@2x.png');
+    background-size: 1139px 617px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 240px 0
+}
+
+.cities .button {
+    color: #FFF;
+    -webkit-box-shadow:inset 0px 0px 0px 2px rgba(255,255,255,0.3);
+    -moz-box-shadow:inset 0px 0px 0px 2px rgba(255,255,255,0.3);
+    box-shadow:inset 0px 0px 0px 2px rgba(255,255,255,0.3);
+}
+
+.cities .button:hover {
+    opacity: 1;
+    background: #FFF;
+    color: #131314;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.cities p {
+    margin-bottom: 60px;
+}
+
+
+/* ================================== Section 6: Press Quotes */
+
+.press {
+    background: #F8F8F9;
+    padding: 120px 0;
+}
+
+.press a {
+    color: #2F363F;
+}
+
+.press ul  {
+    max-width: 1040px;
+    display: block;
+    margin: 0 auto;
+    list-style: none;
+}
+
+.press li  {
+    max-width: 314px;
+    display: inline-block;
+    margin-right: 44px;
+    padding: 0;
+    vertical-align: top;
+}
+
+.press .quote-3  {
+    margin-right: 0;
+}
+
+.press li img {
+    margin-bottom: 20px;
+    opacity: 0.4;
+}
+
+.press li p {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.press li:hover img {
+    opacity: 1;
+    -webkit-transition: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
+    -o-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+}
+
+/* ================================== Section 7: Download Human */
+
+.download {
+    background: #FFF;
+    width: 100%;
+    text-align: left;
+}
+
+.downloadwrapper {
+    max-width: 1060px;
+    margin: 0 auto;
+}
+
+.download img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.download .copy {
+    margin: 0;
+    padding: 0;
+    margin-left: 65px;
+    max-width: 450px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.download p {
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 30;
+}
+
+.download .button {
+    background: #FF561F;
+}
+
+.download .button:hover {
+    background: #131314;
+    -webkit-transition: 0.1s;
+    -moz-transition: 0.1s;
+    -o-transition: 0.1s;
+    transition: 0.1s;
+}
+
+.android-edition {
+    background: none !important;
+    color: #232427 !important;
+    border: 2px solid #232427;
+}
+
+.android-edition:hover {
+    background: #232427 !important;
+    color: #fff !important;
+    -webkit-transition: 0.1s;
+    -moz-transition: 0.1s;
+    -o-transition: 0.1s;
+    transition: 0.1s;
+}
+
+.gethuman-footer > .contentwrapper > .android-edition {
+    margin-left: 25px;
+}
+
+.playstore_download {
+ margin-left: 25px;
+}
+
+/* ================================== Dynamic Footer does not appear on Homepage */
+
+.gethuman-footer h2 {
+    margin: 0 auto !important;
+    text-align: center;
+    font-size: 42px;
+    float: center;
+}
+.gethuman-footer {
+    width: 100%;
+    background: #F8F8F9;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.gethuman-footer p {
+    margin-bottom: 40px;
+}
+
+.gethuman-footer .button {
+    background: #FF561F;
+}
+
+.gethuman-footer .button:hover {
+    background: #131314;
+}
+
+/* ================================== Footer */
+
+footer {
+    margin: 0;
+    padding: 0;
+    background: #131314;
+    padding: 100px 0;
+    display: block;
+    text-align: left;
+}
+
+.container {
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+footer ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: inline-block;
+}
+
+footer li {
+    padding: 0 50px 0 0;
+    display: block;
+    position: relative;
+    float: left;
+    margin-left: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+footer li a {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #FFF;
+}
+
+footer p {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    text-align: left;
+    color: #868687;
+    margin-top: 10px;
+}
+
+footer .privacylink {
+    margin-left: 14px;
+    color: #868687;
+}
+
+.social {
+    display: block;
+    float: right;
+}
+
+.social li {
+    padding: 0 0 0 30px;
+    display: inline;
+}
+
+footer a:hover {
+    opacity: 0.5;
+    -webkit-transition: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
+    -o-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+}
+
+/* ================================== Responsive 1040 */
+
+@media screen and (max-width: 1040px) {
+
+    h1, h2 {
+        font-size: 38px;
+    }
+
+    p {
+        font-size: 14px;
+        margin-bottom: 16%;
+        line-height: 23px;
+    }
+
+    #intro{
+        width: 88%;
+        padding: 35% 6% 30% 6%;
+    }
+
+    header .button {
+        display: none;
+    }
+
+    .headcopy p {
+        margin-bottom: 10%;
+        font-size: 14px;
+    }
+
+    ul, ol {
+        font-size: 14px;
+    }
+
+    #androidsignup {
+        margin: 0 auto;
+        margin-top: 20px;
+        display: block;
+    }
+
+    .contentwrapper{
+        margin-right: 6%;
+        margin-left: 6%;
+    }
+
+    .glyph {
+        margin-bottom: 20px;
+    }
+
+    .getactive, .community, .download, .press, .reviews {
+        padding-top: 60px;
+    }
+
+    .reviews, .community, .download, .press {
+        padding-bottom: 60px;
+    }
+
+    .reviews li  {
+        margin-right: 0px;
+        margin-bottom: 40px;
+        width: 100%;
+        margin-top: 0px;
+    }
+
+    .designed, .cities {
+        padding: 28% 0;
+    }
+
+    .cities {
+        background-size: 1139px 617px;
+    }
+
+    .cities p, .download p {
+        margin-bottom: 10%;
+    }
+
+    .community ul  {
+        margin-top: 10%;
+    }
+
+    .community .photo {
+        width: 100%;
+    }
+
+    .community li  {
+        margin: 0 auto;
+        width: 100%;
+        vertical-align: top;
+        margin-bottom: 0px;
+        margin-right: 0 !important;
+    }
+
+    .community .second {
+        margin-top: 60px;
+    }
+
+    .community li:nth-child(odd) {
+        margin-bottom: 40px;
+    }
+
+    .download .copy {
+        max-width: 620px;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 60px;
+    }
+
+    .download .iphone {
+        display: block;
+        margin: 0 auto;
+        height: 75%;
+    }
+
+    .press ul {
+        width: 100%;
+    }
+
+    .press li{
+        max-width: 500px;
+        margin-right: 0px;
+        margin-top: 50px;
+        width: 100%;
+    }
+
+    .reviews .quote-3{
+        margin-bottom: 0px;
+    }
+
+    .press .quote-1{
+        margin-top: 0px;
+    }
+
+    #android_form2 {
+    background: rgb(250,250,250);
+    border: 1px solid grey;
+    padding: 40px;
+    display: block;
+    margin: 40px auto;
+    max-width: 400px;
+
+}
+
+#mc_embed_signup {
+background: rgb(250,250,250);
+    border: 1px solid grey;
+    padding: 10px 20px;
+    display: block;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 400px;
+
+}
+
+}
+
+/* ================================== Responsive 980 */
+
+@media screen and (max-width: 980px){
+
+    header {
+        max-height: 60px;
+        background: #131314;
+        overflow-y: hidden;
+    }
+
+    header .logo {
+        left: 20px;
+        top: 20px;
+    }
+
+    header ul {
+        margin: 70px 0 30px 0;
+        display: block;
+    }
+
+    header li {
+        display: block;
+    }
+
+    header li a {
+            display: block;
+    }
+
+    .navigation-icon {
+        display: block;
+    }
+
+    .logo {
+        float: left;
+        font-size: 19px;
+        width: auto;
+    }
+
+    .logo .logoicon {
+        width: 22px;
+        height: 22px;
+        vertical-align: top;
+        margin-right: 8px;
+        margin-top: 0px;
+        background-size: 22px 22px !important;
+    }
+
+    .communitytiles p {
+        max-width: 600px;
+    }
+
+    .reviews li {
+        max-width: 600px
+    }
+
+    .getactive .iphonesingleplayer{
+        background-size: 170px 348px;
+        height: 306px;
+        width: 170px;
+        padding-top: 42px;
+    }
+
+    .getactive .iphoneclubs{
+        background-size: 160px 327px;
+        height: 287px;
+        width: 160px;
+        padding-top: 40px;
+        margin-left: -20px;
+    }
+
+    .getactive .singleplayer {
+        left: 27px;
+        top: 100px;
+    }
+
+    .getactive {
+        -webkit-box-shadow: inset 0px -40px 0px 0px #F8F8F9;
+        -moz-box-shadow: inset 0px -40px 0px 0px #F8F8F9;
+        box-shadow:  inset 0px -40px 0px 0px #F8F8F9;
+    }
+
+    .map-overlay{
+        height: calc(100% - 40px);
+    }
+
+    .marker-animation {
+        height: calc(100% - 40px);
+    }
+
+    .screenshot-singleplayer {
+        width: 148px;
+        height: 264px;
+    }
+
+    .screenshot-clubs {
+        width: 138px;
+        height: 247px;
+    }
+
+    footer {
+        padding: 60px 0;
+    }
+
+    #android_form2 {
+        background: rgb(250,250,250);
+        border: 1px solid grey;
+        padding: 20px;
+        display: block;
+        margin: 20px auto;
+        max-width: 360px;
+    }
+
+    #linktodownload_home{
+        display: none;
+        z-index: 0;
+        visibility: hidden;
+    }
+}
+
+
+@media screen and (max-width: 590px){
+    .button {
+        /*margin: 0 auto;*/
+        margin: 0 auto 20px auto;
+        padding: 13px 0;
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .gethuman-footer > .contentwrapper > .android-edition {
+        margin: 0px auto 0px auto;
+    }
+
+    #mc_embed_signup {
+        background: rgb(250,250,250);
+        border: 1px solid grey;
+        padding: 10px;
+        display: block;
+        border-radius: 10px;
+        margin: 20px auto;
+        max-width: 360px;
+    }
+
+    .download .iphone {
+        width: 100%;
+    }
+}
+
+/* ================================== Responsive 510 */
+
+@media screen and (max-width: 510px){
+
+    h1, h2 {
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 400;
+    }
+
+    .button {
+        /*margin: 0 auto;*/
+        margin: 0 auto 20px auto;
+        padding: 13px 0;
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .button.android {
+        margin-top: 40px;
+    }
+
+    .headcopy .button {
+        margin: 0 auto;
+        display: inline-block;
+        padding: 4px 0 4px 0;
+        margin-bottom: 10px;
+    }
+
+    #android_form {
+        max-width: 360px;
+        top: 10%;
+        left: 0%;
+        display: none;
+        margin: 0 auto;
+    }
+
+    #android_form2 {
+        background: rgb(250,250,250);
+        border: 1px solid grey;
+        padding: 10px;
+        display: block;
+        margin: 10px auto;
+        max-width: 300 px;
+    }
+
+    #form-modal {
+        background: #FFF;
+        max-width: 260px;
+        border-radius: 6px;
+        padding: 30px 30px;
+    }
+
+    .getactive .iphoneclubs{
+        margin-left: -60px;
+    }
+
+    .communitytiles p {
+        margin: 10px 0 30px 0;
+    }
+
+    .community li {
+        margin: 0 auto;
+        width: 100%;
+        vertical-align: top;
+    }
+
+    .first {
+        margin-right: 0px;
+    }
+
+    .community li h3, .community .button {
+        margin-left: 0;
+    }
+
+    .community .photo {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+
+    .communitytiles p {
+        margin-bottom: 10px;
+    }
+
+    .community .readstory {
+        padding: 0;
+    }
+
+    .cities {
+        background-size: 900px;
+        background-position: left;
+    }
+
+    .download .iphone {
+        width: 100%;
+        height: 100%;
+    }
+
+    footer {
+        text-align: center;
+    }
+
+    footer ul {
+        display: block;
+        margin-bottom: 30px;
+    }
+
+    footer li {
+        padding: 0 0 12px 0;
+        display: block;
+        float: none;
+    }
+
+    footer p {
+        text-align: center;
+    }
+
+    .social {
+        float: none;
+    }
+
+    .social li {
+        padding: 0 15px 0 15px;
+    }
+
+}
+
+@media screen and (max-width: 400px){
+    .playstore_download {
+        margin-left: 0px;
+        margin-bottom: 15px;
+    }
+
+    .appstore_download{
+        margin-bottom: 15px;
+    }
+}
